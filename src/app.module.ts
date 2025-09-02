@@ -4,6 +4,7 @@ import { CategoryModule } from './cases/categories/category.module';
 import { BrandModule } from './cases/brands/brand.module';
 import { ProductModule } from './cases/products/product.module';
 import { ConfigModule } from '@nestjs/config';
+import { CostumerModule } from './cases/costumer/costumer.module';
 
 
 @Module({
@@ -23,7 +24,8 @@ import { ConfigModule } from '@nestjs/config';
     }),
     CategoryModule,
     BrandModule,
-    ProductModule
+    ProductModule,
+    CostumerModule
   ],
 })
 export class AppModule {}
