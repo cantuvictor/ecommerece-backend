@@ -4,7 +4,8 @@ import { CategoryModule } from './cases/categories/category.module';
 import { BrandModule } from './cases/brands/brand.module';
 import { ProductModule } from './cases/products/product.module';
 import { ConfigModule } from '@nestjs/config';
-import { CostumerModule } from './cases/costumer/costumer.module';
+import { CityModule } from './cases/cities/city.module';
+import { CustomerModule } from './cases/costumer/costumer.module';
 
 
 @Module({
@@ -17,15 +18,16 @@ import { CostumerModule } from './cases/costumer/costumer.module';
       host: process.env.DB_HOST,
       port: Number(process.env.DB_PORT),
       username: process.env.DB_USERNAME,
-      password: process.env.PASSWORD,
-      database: process.env.DATABASE,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DATABASE,
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: true
     }),
     CategoryModule,
     BrandModule,
     ProductModule,
-    CostumerModule
-  ],
+    CityModule,
+    CustomerModule
+  ]
 })
 export class AppModule {}
