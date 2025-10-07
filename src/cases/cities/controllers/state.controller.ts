@@ -1,8 +1,8 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, ParseUUIDPipe, Post, Put } from "@nestjs/common";
-import { State} from "../entities/state.entity";
-import { StateService} from "../services/state.service";
+import { StateService } from "../services/state.service";
+import { State } from "../entities/state.entity";
 
-@Controller('cities')
+@Controller('states')
 export class StateController {
     constructor (
         private readonly service: StateService
@@ -16,7 +16,7 @@ export class StateController {
     @Get(':id')
     async findById(@Param('id', ParseUUIDPipe) id: string): Promise<State> {
         const found = await this.service.findById(id);
-
+        
         if (!found) {
             throw new HttpException('State not found', HttpStatus.NOT_FOUND);
         }
@@ -32,7 +32,7 @@ export class StateController {
     @Put(':id')
     async update(@Param('id', ParseUUIDPipe) id: string, @Body() state: State): Promise<State> {
         const found = await this.service.findById(id);
-
+        
         if (!found) {
             throw new HttpException('State not found', HttpStatus.NOT_FOUND);
         }
@@ -46,7 +46,7 @@ export class StateController {
     @HttpCode(204)
     async remove(@Param('id', ParseUUIDPipe) id: string): Promise<void> {
         const found = await this.service.findById(id);
-
+        
         if (!found) {
             throw new HttpException('State not found', HttpStatus.NOT_FOUND);
         }

@@ -16,7 +16,7 @@ export class CategoryController {
     @Get(':id')
     async findById(@Param('id', ParseUUIDPipe) id: string): Promise<Category> {
         const found = await this.service.findById(id);
-
+        
         if (!found) {
             throw new HttpException('Category not found', HttpStatus.NOT_FOUND);
         }
@@ -32,7 +32,7 @@ export class CategoryController {
     @Put(':id')
     async update(@Param('id', ParseUUIDPipe) id: string, @Body() category: Category): Promise<Category> {
         const found = await this.service.findById(id);
-
+        
         if (!found) {
             throw new HttpException('Category not found', HttpStatus.NOT_FOUND);
         }
@@ -46,7 +46,7 @@ export class CategoryController {
     @HttpCode(204)
     async remove(@Param('id', ParseUUIDPipe) id: string): Promise<void> {
         const found = await this.service.findById(id);
-
+        
         if (!found) {
             throw new HttpException('Category not found', HttpStatus.NOT_FOUND);
         }
